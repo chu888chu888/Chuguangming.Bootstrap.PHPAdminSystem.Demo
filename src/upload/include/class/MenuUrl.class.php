@@ -14,25 +14,16 @@ class MenuUrl extends Base {
 		$url_array = array ();
 		$db=self::__instance();
 		
-		//$privi=explode(',',$user_role);
-		//$sub_condition['menu_id']=$privi;
-		//$sub_condition['online']=$online;
-		//$list = $db->select ( self::getTableName(), self::$columns, array("AND"=>$sub_condition) );
-		
 		$sql ="select * from ".self::getTableName()." me ,".Module::getTableName()." mo where me.menu_id in ($user_role) and me.online=$online and me.module_id = mo.module_id and  mo.online=1";
 		$list = $db->query($sql) ->fetchAll();
 		
-		
 		if ($list) {
 			foreach ( $list as $menu_info ) {
-				
 				$url_array [] = $menu_info ['menu_url'];
 			}
 			return $url_array;
 		}
-		
 		return array ();
-	
 	}
 	
 	public static function getMenuByUrl($url) {
@@ -40,8 +31,6 @@ class MenuUrl extends Base {
 		$condition = array("menu_url" => $url);
 		$db=self::__instance();
 		$list = $db->select ( self::getTableName(), self::$columns, $condition );
-		
-		
 		if ($list) {
 			 $menu= $list[0];
 			 $module = Module::getModuleById($menu['module_id']);
@@ -56,7 +45,6 @@ class MenuUrl extends Base {
 			 return $menu;
 		}
 		return array ();
-	
 	}
 	
 	public static function getListByModuleId($module_id,$type="all" ) {
@@ -68,6 +56,9 @@ class MenuUrl extends Base {
 				$sub_condition["is_show"] = 1;
 				$sub_condition["online"] =1;
 				break;
+			case "role":
+				$sub_condition["online"] =1;
+				break;
 			case "navibar":
 				$sub_condition["is_show"] = 1;
 				$sub_condition["online"] =1;
@@ -75,9 +66,7 @@ class MenuUrl extends Base {
 			default:
 		}
 		$sub_condition ["module_id"] = $module_id;
-		
 		$condition = array("AND" => $sub_condition);
-		
 		$db=self::__instance();
 		$list = $db->select ( self::getTableName(), self::$columns, $condition );
 		if ($list) {
@@ -113,7 +102,6 @@ class MenuUrl extends Base {
 		if($page_size){
 			$condition['LIMIT'] =array($start,$page_size);
 		}
-		
 		$list = $db->select ( self::getTableName(), self::$columns ,$condition);
 		$session_list = self::getSessionMenus();
 		foreach($list as &$menu){
@@ -145,7 +133,6 @@ class MenuUrl extends Base {
 			if ($new_list) {
 				$_SESSION[self::SESSION_NAME] = $new_list;
 			}
-			//var_dump($new_list);
 			return $new_list;
 		}	
 	}
@@ -169,9 +156,7 @@ class MenuUrl extends Base {
 		}
 
 		$sql = "select * ,coalesce(mo.module_name,'已删除') from ".self::getTableName()." me left join ".Module::getTableName()." mo on me.module_id = mo.module_id $where order by me.module_id,me.menu_id $limit";
-		
 		$list=$db->query($sql)->fetchAll();
-		
 		$session_list = self::getSessionMenus();
 	
 		foreach($list as &$menu){
@@ -226,7 +211,6 @@ class MenuUrl extends Base {
 		$db=self::__instance();
 		$condition = array("menu_id" => $menu_id);
 		$list = $db->select ( self::getTableName(), self::$columns, $condition );
-		
 		if ($list) {
 			return $list [0];
 		}
@@ -248,7 +232,6 @@ class MenuUrl extends Base {
 		
 		$db=self::__instance();
 		$list = $db->select ( self::getTableName(), self::$columns, array("AND"=>$sub_condition) );
-		//print_r($db->last_query());
 		if ($list) {
 			return $list;
 		}

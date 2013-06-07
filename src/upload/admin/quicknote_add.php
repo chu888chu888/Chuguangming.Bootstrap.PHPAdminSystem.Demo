@@ -14,7 +14,6 @@ if (Common::isPost ()) {
 		
 		if ($note_id) {
 			SysLog::addLog ( UserSession::getUserName(), 'ADD', 'QuickNote' ,$note_id, json_encode($input_data) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('便签添加成功','admin/quicknote_add.php');
 		}
 	}

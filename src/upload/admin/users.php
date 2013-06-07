@@ -66,15 +66,10 @@ if($search){
 	$user_infos = User::getAllUsers ( $start , $page_size );
 }
 
-
 $page_html=Pagination::showPager("users.php?user_group=$user_group&user_name=$user_name&search=$search",$page_no,$page_size,$row_count);
-
-
-
 
 //追加操作的确认层
 $confirm_html = OSAdmin::renderJsConfirm("icon-pause,icon-play,icon-remove");
-
 
 // 设置模板变量
 $group_options=UserGroup::getGroupForOptions();

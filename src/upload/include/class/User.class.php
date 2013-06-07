@@ -117,7 +117,6 @@ class User extends Base{
 						)
 					);
 		$list = $db->select( self::getTableName(), self::$columns, $condition );
-		//var_dump($db->last_query());exit;
 		if ($list) {
 			return $list;
 		}
@@ -128,7 +127,6 @@ class User extends Base{
 		$user_info = UserSession::getSessionInfo ();
 		if (empty ( $user_info )) {
 			Common::jumpUrl("login.php");
-			//Common::exitWithMessage ('请先登录', '需要登录才能操作', '登入' , 'login.php' );
 			return true;
 		}
 	}
@@ -142,7 +140,6 @@ class User extends Base{
 		$role_menu_url = MenuUrl::getMenuByRole ( $user_info['user_role']);
 		
 		$search_result = in_array ( $action_url, $role_menu_url );
-		// var_dump($role_menu_url); 
 		if (! $search_result) {
 			Common::exitWithMessage ('您当前没有权限访问该功能，如需访问请联系管理员开通权限','index.php' );
 			return true;
@@ -177,7 +174,6 @@ class User extends Base{
 		$condition=array("user_id"=>$user_id);
 		
 		$id = $db->update ( self::getTableName(), $user_data, $condition );
-		//var_dump($db->last_query());exit; 
 		return $id;
 	}
 	
@@ -206,7 +202,6 @@ class User extends Base{
 		}
 		$db=self::__instance();
 		$id = $db->insert ( self::getTableName(), $user_data );
-		//var_dump($db->last_query());
 		return $id;
 	}
 	
@@ -261,16 +256,12 @@ class User extends Base{
 	}
 	
 	public static function loginDoSomething($user_id){
-
 		
 		$user_info = User::getUserById($user_id);
-
 		if($user_info['status']!=1){
 			Common::jumpUrl("login.php");
 			return;
 		}
-		
-		
 		
 		//读取该用户所属用户组将该组的权限保存在$_SESSION中
 		$user_group = UserGroup::getGroupById($user_info['user_group']);
@@ -283,17 +274,12 @@ class User extends Base{
 			$user_info['setting']=1;
 		}
 		
-		$login_time = time(); //Common::getDateTime ();
+		$login_time = time();
 		$login_ip = Common::getIp ();
 		$update_data = array ('login_ip' => $login_ip, 'login_time' => $login_time );
 		User::updateUser ( $user_info['user_id'], $update_data );
 		$user_info['login_ip']=$login_ip;
 		$user_info['login_time']=Common::getDateTime($login_time);
-		
-		
 		UserSession::setSessionInfo( $user_info);
-		//END
-		
-		
 	}
 }

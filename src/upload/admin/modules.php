@@ -8,6 +8,8 @@ if ($method == 'del' && ! empty ( $module_id )) {
 	$menus = Module::getModuleMenu($module_id);
 	if(sizeof($menus)>0){
 		OSAdmin::alert("error",ErrorMessage::HAVE_FUNC);
+	}if(intval($module_id) === 1){
+		OSAdmin::alert("error",ErrorMessage::CAN_NOT_DELETE_SYSTEM_MODULE);
 	}else{
 		$module=Module::getModuleById($module_id);
 		$result = Module::delModule ( $module_id );

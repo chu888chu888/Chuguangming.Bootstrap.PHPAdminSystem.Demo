@@ -25,7 +25,6 @@ if ($method == 'del' && ! empty ( $note_id )) {
 		$result = QuickNote::delNote ( $note_id );
 		if ($result>0) {
 			SysLog::addLog ( UserSession::getUserName(), 'DELETE', 'QuickNote',$note_id, json_encode($note) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('便签删除成功','admin/quicknotes.php');
 		}else{
 			OSAdmin::alert("error");

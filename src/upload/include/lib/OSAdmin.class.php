@@ -53,6 +53,17 @@ class OSAdmin extends Base {
 		return $confirm_html;
 	}
 	
+	public static function checkNoNeedLogin($action_url,$no_need_login_array){
+		$last_slash_pos = strrpos($action_url,'/');
+		$action_dir = substr($action_url,0,$last_slash_pos+1);
+		
+		if(in_array($action_url,$no_need_login_array) || in_array($action_dir,$no_need_login_array)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public static function _restore_db_($sql_file){
 		$file = file($sql_file);
 		$sql = implode('',$file);

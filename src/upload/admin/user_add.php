@@ -18,7 +18,6 @@ if (Common::isPost ()) {
 		if ($user_id) {
 			$input_data['password']="";
 			SysLog::addLog ( UserSession::getUserName(), 'ADD', 'User' ,$user_id, json_encode($input_data) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('账号添加成功','admin/users.php');
 		}else{
 			OSAdmin::alert("error");

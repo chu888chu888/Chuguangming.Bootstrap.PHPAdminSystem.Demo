@@ -22,8 +22,6 @@ class SideBar {
 				continue;
 			}
 			//去除无权限访问的
-			
-
 			foreach ( $list as $key => $value ) {
 				if (! in_array ( $value ['menu_url'], $access )) {
 					unset ( $list [$key] );
@@ -31,7 +29,6 @@ class SideBar {
 			}
 			$data [$k] ['menu_list'] = $list;
 		}
-	 
 		return $data;
 	}
 	
@@ -53,8 +50,6 @@ class SideBar {
 				continue;
 			}
 			//去除无权限访问的
-			
-
 			foreach ( $list as $key => $value ) {
 				if (! in_array ( $value ['menu_url'], $access )) {
 					unset ( $list [$key] );
@@ -62,7 +57,6 @@ class SideBar {
 			}
 			$data [$k] ['menu_list'] = $list;
 		}
-	 
 		return $data;
 	}
 }

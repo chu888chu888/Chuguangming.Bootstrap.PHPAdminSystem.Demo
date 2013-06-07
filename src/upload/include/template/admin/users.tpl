@@ -35,7 +35,6 @@
     <div class="block">
         <a href="#page-stats" class="block-heading" data-toggle="collapse">账号列表</a>
         <div id="page-stats" class="block-body collapse in">
-
                <table class="table table-striped">
               <thead>
                 <tr>
@@ -52,10 +51,8 @@
                 </tr>
               </thead>
               <tbody>							  
-                <{foreach name=user from=$user_infos item=user_info}>
-				 
+                <{foreach name=user from=$user_infos item=user_info}>				 
 					<tr>
-				 
 					<td><{$user_info.user_id}></td>
 					<td><{$user_info.user_name}></td>
 					<td><{$user_info.real_name}></td>
@@ -95,7 +92,6 @@ $(".a_search").click(function(){
 </script>
 <!---操作的确认层，相当于javascript:confirm函数--->
 <{$osadmin_action_confirm}>
-
 
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
 <{ include file="footer.tpl" }>

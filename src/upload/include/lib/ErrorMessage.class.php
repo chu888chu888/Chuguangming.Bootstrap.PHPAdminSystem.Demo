@@ -15,7 +15,10 @@ class ErrorMessage {
 	const BE_PAUSED		="您被封停，请联系管理员！";
 	const USER_OR_PWD_WRONG	="用户名或密码错误";
 	const SUCCESS_NEED_LOGIN="操作成功，部分功能需要用户重新登录才可使用";
-	const CAN_NOT_DELETE_SYSTEM_MENU ="系统菜单不能删除";
+	const CAN_NOT_DELETE_SYSTEM_MENU ="系统菜单不能被删除";
+	const CAN_NOT_DELETE_SYSTEM_MODULE ="系统模块不能被删除";
+	const CAN_NOT_OFFLINE_SYSTEM_MODULE ="系统模块禁止下线操作";
+	const CAN_NOT_TRANS_SYSTEM_MENU ="系统菜单禁止转移到其它模块下";
 	const QUICKNOTE_NOT_OWNER ="不能修改或删除其他人提交的quick note.";
 	const USER_NOT_EXIST 	="账户不存在";
 	const MODULE_NOT_EXIST 	="菜单模块不存在";

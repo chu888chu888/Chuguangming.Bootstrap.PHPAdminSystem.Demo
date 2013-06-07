@@ -28,7 +28,7 @@
 					<input type="text" name="verify_code" class="span4" placeholder="输入验证码" autocomplete="off">
 					<a href="#"><img title="验证码" id="verify_code" src="<{$smarty.const.ADMIN_URL}>/verify_code_cn.php" style="vertical-align:top"></a>
 					<div class="clearfix"><input type="checkbox" name="remember" value="remember-me"> 记住我 
-					<span class="label label-info"> 一个月内不用再次登录 admin/123456</span>
+					<span class="label label-info">一个月内不用再次登入</span>
 					<input type="submit" class="btn btn-primary pull-right" name="loginSubmit" value="登入"/></div>
 					
                 </form>
@@ -43,7 +43,7 @@ $("#verify_code").click(function(){
 	var hour = d.getHours(); 
 	var minute = d.getMinutes();
 	var sec = d.getSeconds();
-    $(this).attr("src","/verify_code_cn.php?"+hour+minute+sec);
+    $(this).attr("src","<{$smarty.const.ADMIN_URL}>/verify_code_cn.php?"+hour+minute+sec);
 });
 </script>
 

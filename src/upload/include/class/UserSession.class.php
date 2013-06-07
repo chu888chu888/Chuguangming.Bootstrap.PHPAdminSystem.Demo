@@ -2,7 +2,6 @@
 if(!defined('ACCESS')) {exit('Access denied.');}
 class UserSession{
 	public static function setSessionInfo($user_info){
-	
 		$_SESSION['user_info'] = $user_info;
 		return true;
 	}
@@ -68,7 +67,5 @@ class UserSession{
 		}
 		$user_info['login_time']=Common::getDateTime($user_info['login_time']);
 		UserSession::setSessionInfo( $user_info);
-		//END
-	
 	}
 }

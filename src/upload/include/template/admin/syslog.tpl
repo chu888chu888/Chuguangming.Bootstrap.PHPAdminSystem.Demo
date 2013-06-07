@@ -6,8 +6,6 @@
 <{$osadmin_action_alert}>
 <{$osadmin_quick_note}>
 
-
-
 <div style="border:0px;padding-bottom:5px;height:auto">
 	<form action="" method="GET" style="margin-bottom:0px">
 	<div style="float:left;margin-right:5px">
@@ -32,13 +30,9 @@
 	<div style="clear:both;"></div>
 	</form>
 </div>
-
- 
-	
     <div class="block">
         <a href="#page-stats" class="block-heading" data-toggle="collapse">操作记录</a>
         <div id="page-stats" class="block-body collapse in">
-
                <table class="table table-striped">
               <thead>
                 <tr>
@@ -53,9 +47,7 @@
               </thead>
               <tbody>							  
                 <{foreach name=sys_log from=$sys_logs item=sys_log}>
-					 
 					<tr>
-					 
 					<td><{$sys_log.op_id}></td>
 					<td><{$sys_log.user_name}></td>
 					<td><{$sys_log.action}></td>
@@ -68,11 +60,8 @@
 				<{/foreach}>
               </tbody>
             </table>
-			
 				<!--- START 分页模板 --->
-				
                <{$page_html}>
-					
 			   <!--- END --->
         </div>
     </div>
@@ -89,10 +78,6 @@ $(function() {
 	date.datepicker( "option", "firstDay", 1 );
 });
 </script>
-
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
 	
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
 <{ include file="footer.tpl" }>

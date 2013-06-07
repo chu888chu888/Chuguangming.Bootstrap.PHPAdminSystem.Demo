@@ -34,7 +34,6 @@ if (Common::isPost ()) {
 	}
 }
 
-
 $group_options=UserGroup::getGroupForOptions();
 
 Template::assign ( 'user', $user );

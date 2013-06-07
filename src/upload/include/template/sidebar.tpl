@@ -35,7 +35,7 @@
             <li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.module_url}>"> <{$content_header.module_name}> </a> <span class="divider">/</span></li>
            
 			<{ if $content_header.father_menu }>
-			<li><a href="<{$content_header.father_menu_url}>"> <{$content_header.father_menu_name}> </a> <span class="divider">/</span></li>
+			<li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.father_menu_url}>"> <{$content_header.father_menu_name}> </a> <span class="divider">/</span></li>
 			<{ /if}>
 			
 			<li class="active"><{$content_header.menu_name}></li>

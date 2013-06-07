@@ -1,36 +1,32 @@
 <?php
 if(!defined('ACCESS')) {exit('Access denied.');}
 class Common {
+
+	//获取OSAdmin的action_url，用于权限验证
 	public static function getActionUrl(){
-		
 		$action_script=$_SERVER['SCRIPT_NAME'];
-		
-		//$action_script = "/login.php";
 		$admin_url = strtolower(ADMIN_URL);
-		 
-		//$admin_url = "http://osadmin.org/";
 		if($admin_url{strlen($admin_url)-1}=="/"){
 			$admin_url = substr($admin_url,0,strlen($admin_url)-1);
 		}
 	
 		$http_pos = strpos($admin_url,'http://');
-		$slash = 0;
+		
 		if($http_pos !== false){
 			$admin_url_no_http = substr($admin_url,7);			
 		}else{
 			$admin_url_no_http=$admin_url;
 		}
-		
+		$slash = 0;
 		$slash=strpos($admin_url_no_http,'/');
 		
 		if($slash){
 			$sub_dir = substr($admin_url_no_http,$slash);
-			$ret = substr($action_script,strlen($sub_dir));
+			$action_url = substr($action_script,strlen($sub_dir));
 		}else{
-			$ret =$action_script;
-			
+			$action_url =$action_script;
 		}
-		return $ret;
+		return $action_url;
 	}
 	public static function exitWithMessage($message_detail, $forward_url, $second = 3,$type="message") {
 
